@@ -1,0 +1,10 @@
+default_budget:
+  startup_files: 4
+  relevant_memory_files: 6
+  archive_files: 0
+
+rules:
+  - load_summary_first
+  - load_relevant_docs_only
+  - never_auto_load_archive
+  - prefer_structured_records

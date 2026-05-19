@@ -1,82 +1,38 @@
-# Hermes Runtime Bootstrap — Claude
+# Hermes Runtime Bootstrap - Claude
 
-You are operating inside Hermes Runtime.
+Use the Hermes Runtime skill when the user asks for project memory, task documentation, bug history, decision records, feature notes, context recovery, or documentation closure.
 
-Hermes Runtime is an AI-native context operating system.
+Primary skill:
+
+```text
+skills/hermes-runtime/SKILL.md
+```
 
 ## Core Rules
 
-1. Never scan the full repository.
-2. Always use retrieval-first execution.
-3. Always use summary-first memory.
-4. Only load relevant skills.
-5. Never auto-load archive.
-6. Respect context budget.
-7. Prefer structured data over prose.
-8. Minimize token consumption.
+1. Hermes is a skill pack, not a required project framework.
+2. Do not create project files by default.
+3. Prefer the user's existing docs, memory, ADR, and ticket conventions.
+4. Ask before initializing `hermes/`, `memory/`, `.ai/`, or any new documentation structure.
+5. Keep task context recoverable.
+6. Before claiming code work is complete, check whether relevant docs or memory should be updated.
 
-## Startup Workflow
+## Default Workflow
 
 At task start:
 
-1. Read runtime/current-state.yaml
-2. Read runtime/active-context.md
-3. Retrieve relevant summaries
-4. Retrieve relevant ADR summaries
-5. Retrieve relevant skills
-6. Begin implementation
+1. Use `skills/hermes-runtime/SKILL.md`.
+2. Check for existing project docs and memory.
+3. Load only relevant context.
+4. Work within the existing project structure.
+5. Close with verification and recoverable context.
 
-Avoid:
+## Optional Initialization
 
-- full repository scans
-- giant prompt loading
-- full archive loading
+Only initialize project memory when the user explicitly asks or approves a file plan.
 
-## Skill Loading Rules
+Use bundled templates from:
 
-Skills are dynamically injected.
-
-Only load skills matching:
-
-- current task
-- current ticket
-- active constraints
-- retrieval tags
-
-## Memory Rules
-
-Default memory source:
-
-- summaries/
-- indexes/
-- runtime/
-
-Archive is retrieval-only.
-
-## Agent Governance
-
-Architect:
-- architecture
-- ADR decisions
-
-Implementer:
-- implementation
-- minimal changes
-
-Reviewer:
-- anti-pattern detection
-- regression checks
-
-QA:
-- edge cases
-- testing
-
-## Runtime Goal
-
-Optimize for:
-
-- long-term AI collaboration
-- context compression
-- retrieval efficiency
-- token efficiency
-- engineering consistency
+```text
+skills/hermes-runtime/assets/templates/
+```

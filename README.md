@@ -1,193 +1,192 @@
 # Hermes Runtime
 
-AI-Native Context Operating System for Agentic Software Engineering.
+**Repository description:** A non-invasive project-memory skill pack for AI agents that keeps tasks, bugs, decisions, and feature context recoverable.
 
-Hermes Runtime transforms AI coding workflows from giant prompts into:
+Hermes Runtime is a universal skill for AI-assisted software engineering. It helps an AI agent remember what happened, why it happened, and what must be updated before work is considered complete.
 
-- Context Compression
-- Dynamic Skill Injection
-- Retrieval-Based Memory
-- Agent Governance
-- Runtime Context Routing
-- Token Budget Control
+It is intentionally **not** a required project framework:
 
-Compatible with:
+- it does not create project files by default
+- it does not require a `hermes/` directory
+- it uses existing `docs/`, `memory/`, `.ai/`, `adr/`, or ticket conventions first
+- it initializes project memory only when the user explicitly asks and approves the file plan
 
-- Claude
-- GPT
-- Cursor
-- Windsurf
-- Gemini
-- Kiro
+## Why
 
----
+AI coding sessions often lose context between tasks:
 
-# Why Hermes Runtime
+- bugs get fixed without root-cause memory
+- architecture decisions disappear into chat history
+- feature behavior changes without a durable note
+- future agents must rediscover the same project facts
 
-Traditional AI workflows fail because of:
+Hermes Runtime gives agents a lightweight closure discipline:
 
-- full repository scans
-- giant prompts
-- no memory compression
-- no retrieval layer
-- context explosion
-- no long-term engineering memory
+> Every task should leave recoverable context.
 
-Hermes Runtime solves this using:
+## What Hermes Does
 
-- summary-first memory
-- modular skills
-- runtime context isolation
-- archive isolation
-- retrieval-first execution
-- agent governance
+Hermes guides the AI agent to:
 
----
+- route existing project memory before work
+- keep task context recoverable
+- identify when bug, feature, or ADR records are needed
+- update existing docs when the project already has them
+- avoid creating new files unless the user approves
+- verify documentation closure before claiming completion
 
-# Core Philosophy
+## Install
 
-Hermes Runtime is not project management.
+Install or copy the skill folder:
 
-Hermes Runtime is:
-
-# AI Context Operating System
-
-Core concepts:
-
-- Context Engineering
-- Memory Compression
-- Skill Routing
-- Retrieval Architecture
-- Agent Governance
-
----
-
-# Quick Start
-
-## 1. Clone Repository
-
-```bash
-git clone https://github.com/jacson10l/Hermes-Runtime
+```text
+skills/hermes-runtime/
 ```
 
----
+The skill entrypoint is:
 
-## 2. Create Hermes Directory
-
-```bash
-mkdir hermes
+```text
+skills/hermes-runtime/SKILL.md
 ```
 
----
+If your AI tool supports local skills, install this folder as a skill. If it does not, ask the AI to read `skills/hermes-runtime/SKILL.md` before starting work.
 
-## 3. Copy Runtime Templates
+## Quick Use
 
-```bash
-cp -r templates/* hermes/
+For normal non-invasive use:
+
+```text
+Use the Hermes Runtime skill for this task.
+Keep context recoverable, but do not create project files unless I explicitly approve it.
 ```
 
----
+For code changes:
 
-## 4. Load Bootstrap Prompt
+```text
+Use Hermes Runtime.
+Before you finish, verify the change and tell me what project memory or docs should be updated.
+Use existing docs if they exist. Ask before creating new files.
+```
 
-For Claude:
+For read-only analysis:
+
+```text
+Use Hermes Runtime in read-only mode.
+Analyze the issue and produce a recoverable task note in your answer.
+Do not modify files.
+```
+
+## Full Project Memory Mode
+
+If you want behavior closer to a complete Hermes project management system, explicitly initialize project memory:
+
+```text
+Initialize Hermes memory for this project.
+Show me the file plan first and use the least intrusive structure.
+```
+
+The agent should then propose one of these options:
+
+1. use the project's existing docs
+2. create a small `memory/` directory
+3. create a dedicated `hermes/` directory only if requested
+
+After initialization, future tasks can use:
+
+```text
+Use Hermes Runtime for all work in this project.
+Create or update task memory, bug notes, feature notes, ADRs, and current state when applicable.
+```
+
+## What "Automatic Documentation" Means
+
+Hermes does not secretly write files.
+
+It gives the agent automatic documentation-closure behavior:
+
+- detect whether documentation is needed
+- use existing docs when available
+- recommend or perform updates when permitted
+- ask before creating new project structure
+- refuse to treat code-only work as fully closed when project memory is expected
+
+So the model is:
+
+```text
+Install skill = documentation-closure behavior.
+Initialize memory = full project memory system.
+```
+
+## Skill Structure
+
+```text
+skills/hermes-runtime/
+├── SKILL.md
+├── references/
+│   ├── memory-routing.md
+│   ├── task-ticketing.md
+│   ├── documentation-closure.md
+│   ├── initialization.md
+│   ├── agents/
+│   └── runtime-notes/
+├── scripts/
+└── assets/
+    └── templates/
+```
+
+`SKILL.md` is the public entrypoint. Reference files are loaded only when needed.
+
+## Optional Helper Scripts
+
+Helper scripts are bundled for approved project-memory initialization:
+
+```text
+skills/hermes-runtime/scripts/new-ticket.sh
+skills/hermes-runtime/scripts/new-feature.sh
+skills/hermes-runtime/scripts/new-bug.sh
+skills/hermes-runtime/scripts/new-adr.sh
+skills/hermes-runtime/scripts/check-doc-sync.sh
+```
+
+Run them from the target project root only after the user approves creating memory files.
+
+## Bootstrap Prompts
+
+Optional bootstrap prompts are provided for tools that do not have native skill loading:
 
 ```text
 bootstrap/claude.md
-```
-
-For Cursor:
-
-```text
 bootstrap/cursor.md
 ```
 
----
-
-# Runtime Architecture
+They both point to the same skill entrypoint:
 
 ```text
-hermes/
-├── runtime/
-├── memory/
-├── retrieval/
-├── skills/
-├── agents/
-├── tickets/
-└── scripts/
+skills/hermes-runtime/SKILL.md
 ```
 
----
-
-# Skill System
-
-Skills are:
-
-- modular
-- dynamically injected
-- machine-readable
-- retrieval-friendly
-- token optimized
-
-Example:
-
-```yaml
-name: websocket-reconnect
-
-domain: websocket
-
-triggers:
-  - websocket
-  - reconnect
-  - ws
-
-constraints:
-  - single-owner
-  - retry-limit
-
-anti_patterns:
-  - duplicate websocket instances
-```
-
----
-
-# Core Runtime Rules
-
-1. Never scan the full repository.
-2. Always load runtime first.
-3. Summary-first retrieval.
-4. Load only relevant skills.
-5. Archive never auto-injected.
-6. Respect token budgets.
-7. Prefer structured data.
-8. Context is a finite resource.
-
----
-
-# Repository Structure
+## Suggested GitHub Topics
 
 ```text
-core/
-bootstrap/
-skills/
-agents/
-templates/
-docs/
-examples/
-install/
+ai-agents
+ai-coding
+codex-skills
+claude-skills
+project-memory
+context-engineering
+software-engineering
+documentation
+adr
+agentic-workflows
 ```
 
----
+## Vision
 
-# Vision
+Hermes Runtime aims to make AI-assisted engineering recoverable:
 
-Hermes Runtime aims to become:
-
-# Universal AI Context Runtime
-
-for:
-
-- software engineering
-- autonomous agents
-- long-term memory systems
-- AI-native development workflows
+```text
+Every task can explain what happened.
+Every bug can explain why it happened.
+Every decision can explain why it was made.
+Every future AI session can recover the useful context.
+```
