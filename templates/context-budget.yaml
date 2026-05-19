@@ -1,0 +1,13 @@
+system_prompt: 1200
+
+runtime: 300
+
+active_ticket: 2000
+
+skills: 2000
+
+memory_summary: 1000
+
+diff_context: 3000
+
+hard_limit: 12000
