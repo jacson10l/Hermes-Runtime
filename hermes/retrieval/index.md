@@ -13,6 +13,7 @@ Before making code changes, read this index and then load only the referenced fi
 ## Features
 
 - `hermes/memory/features/strict-documentation-closure.md`
+- `hermes/memory/features/host-project-bootstrap.md`
 
 ## Bugs
 
@@ -21,6 +22,7 @@ Before making code changes, read this index and then load only the referenced fi
 ## Decisions
 
 - `hermes/memory/decisions/ADR-001-hermes-memory-rule.md`
+- `hermes/memory/decisions/ADR-002-host-rule-bootstrap-and-uninstall-manifest.md`
 
 ## Workflows
 

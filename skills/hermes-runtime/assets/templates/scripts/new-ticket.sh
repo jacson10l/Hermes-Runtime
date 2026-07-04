@@ -9,12 +9,20 @@ if [ -z "$title" ]; then
 fi
 
 slug=$(printf "%s" "$title" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
-date=$(date +%F)
-target="hermes/tickets/${date}-${slug}.md"
+if [ -z "$slug" ]; then
+  slug="ticket"
+fi
+
+timestamp=$(date +%F-%H%M)
+base="hermes/tickets/${timestamp}-${slug}"
+target="${base}.md"
 
 if [ -e "$target" ]; then
-  echo "Ticket already exists: $target"
-  exit 1
+  counter=2
+  while [ -e "${base}-${counter}.md" ]; do
+    counter=$((counter + 1))
+  done
+  target="${base}-${counter}.md"
 fi
 
 mkdir -p hermes/tickets

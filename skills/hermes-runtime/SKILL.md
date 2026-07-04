@@ -38,6 +38,9 @@ By default, operate as a skill:
 5. Initialize only on request.
    If the user asks to initialize Hermes memory, present the file plan first. Use `assets/templates/` or the helper scripts in `scripts/` only after approval.
 
+6. Bootstrap host rules only on request.
+   If the user wants Hermes to run at the start and end of future sessions, explain that skill installation alone is not a background hook. Use `scripts/hermes-project.sh` to install managed rules for Codex, Claude, or Cursor after approval. See `references/initialization.md`.
+
 ## Optional References
 
 - `references/agents/` contains optional role guidance.
@@ -62,6 +65,14 @@ Propose the least intrusive option:
 3. Use `hermes/` only when the user wants a dedicated Hermes memory area.
 
 Show the exact files before creating them.
+
+For supported project-level integrations, the installer can write managed rule blocks to:
+
+- Codex: `AGENTS.md`
+- Claude Code: `CLAUDE.md`
+- Cursor: `.cursor/rules/hermes-memory.mdc`
+
+The same installer can uninstall those blocks and remove Hermes memory it created.
 
 ## Completion Standard
 

@@ -2,7 +2,7 @@
 
 ## Files
 
-- tickets: `YYYY-MM-DD-short-title.md`
+- tickets: `YYYY-MM-DD-HHMM-short-title.md`, with `-2`, `-3`, etc. when needed
 - bugs: `BUG-XXX-short-title.md`
 - decisions: `ADR-XXX-short-title.md`
 - features: `short-feature-name.md`

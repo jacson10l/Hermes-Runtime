@@ -12,6 +12,7 @@
 | Skill entrypoint | Defines Hermes Runtime behavior for agents that support skills. | `skills/hermes-runtime/SKILL.md` |
 | References | Provides deeper workflow guidance loaded only when relevant. | `skills/hermes-runtime/references/` |
 | Templates | Supplies files for approved project-memory initialization. | `skills/hermes-runtime/assets/templates/` |
+| Project bootstrap | Installs or removes managed Codex, Claude Code, and Cursor project rules and optional `hermes/` memory. | `skills/hermes-runtime/scripts/hermes-project.sh` |
 | Bootstrap prompts | Gives non-skill tools a lightweight way to use Hermes. | `bootstrap/` |
 | Project memory | Stores this repository's strict-mode task, feature, decision, and state records. | `hermes/` |
 | Agent rules | Applies the Hermes memory rule in tools that read project rules. | `.cursor/rules/hermes-memory.mdc`, `AGENTS.md` |
@@ -39,6 +40,7 @@ User task
 - Add templates under `skills/hermes-runtime/assets/templates/`.
 - Add workflow guidance under `skills/hermes-runtime/references/`.
 - Add project-specific memory under `hermes/memory/`.
+- Add supported agent targets in `skills/hermes-runtime/scripts/hermes-project.sh`.
 
 ## Known Constraints
 

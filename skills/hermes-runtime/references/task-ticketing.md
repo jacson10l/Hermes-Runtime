@@ -26,8 +26,10 @@ Use the project's existing location first.
 If the user chooses Hermes memory, use:
 
 ```text
-hermes/tickets/YYYY-MM-DD-short-title.md
+hermes/tickets/YYYY-MM-DD-HHMM-short-title.md
 ```
+
+If a ticket with the same timestamp and title already exists, append a numeric suffix such as `-2` or `-3`. This keeps same-day, same-topic work from colliding in multi-maintainer projects.
 
 The optional helper script is:
 
